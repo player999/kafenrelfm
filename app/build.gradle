@@ -1,0 +1,35 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 14
+    buildToolsVersion '19.0.0'
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 14
+        versionCode 4
+        versionName "1.1"
+    }
+    signingConfigs {
+        release_signature {
+            keyAlias 'Kafenrelfm'
+            keyPassword '11071989'
+            storeFile file('/home/player999/AndroidStudioProjects/keystorage/keystorage.jks')
+            storePassword '11071989'
+        }
+    }
+
+    buildTypes {
+        release {
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release_signature
+            debuggable false
+            jniDebugBuild false
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:+'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
